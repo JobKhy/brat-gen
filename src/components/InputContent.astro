@@ -1,0 +1,24 @@
+---
+const { theme = '', _content = '' } = Astro.params;
+
+---
+<div class="input-container">
+  <textarea class={`theme-${theme}`} rows="3" placeholder="Enter a text to generate a brat" oninput={`setContent(this.value)`}/>
+  <button class={`theme-${theme} submit`} onclick={`submitContent('${theme}')`} ></>Generate</button>
+    
+  </button>
+</div>
+
+<script is:inline>
+  let newContent = '';
+  
+  function setContent(content) {
+    newContent = content;
+  }
+
+  function submitContent(theme) {
+    if (newContent === '') return
+    const newURL = `/${theme}/${newContent}`;
+    window.location.replace(newURL);
+  }
+</script>

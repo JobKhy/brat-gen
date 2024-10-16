@@ -1,0 +1,29 @@
+---
+interface Props {
+  themes: {
+    name: string;
+    value: string;
+  }[];
+}
+const { themes } = Astro.props;
+
+const { theme = '', content = '' } = Astro.params;
+
+---
+
+<div class="themes-container">
+  {
+    themes.map((theme) => (
+      <button class={`theme-${theme.name}`} onclick={`switchTheme('${theme.name}', '${content}')`}>{theme.value}</button>
+    ))
+  }
+</div>
+
+
+<script is:inline>
+  function switchTheme(switchTheme, content) {
+    const newURL = `/${switchTheme}/${content}`;
+    console.log(newURL);
+    window.location.replace(newURL);
+  }
+</script>

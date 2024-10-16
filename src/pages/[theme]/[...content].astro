@@ -1,0 +1,82 @@
+---
+import ThemesContainer from '../../components/ThemesContainer.astro';
+import InputContent from '../../components/InputContent.astro';
+import CreatedBy from '../../components/CreatedBy.astro';
+import '../../styles/index.css'
+
+const { theme, content } = Astro.params;
+
+const themes = [
+  {
+    name: 'BAICDBASB',
+    value: "brat and it's completely different but also still brat",
+  },
+  {
+    name: 'brat',
+    value: 'brat',
+  },
+  {
+    name: 'BAITSBTTMSSIN',
+    value: "brat and it's the same but there's three more songs so it's not",
+  },
+  {
+    name: 'crash',
+    value: 'crash',
+  },
+  {
+    name: 'HIFN',
+    value: "how i'm feeling now",
+  },
+  {
+    name: 'charli',
+    value: 'charli',
+  },
+  {
+    name: 'pop2',
+    value: 'pop 2',
+  },
+  {
+    name: 'No1Angel',
+    value: 'Number 1 Angel'
+  },
+  {
+    name: 'sucker',
+    value: 'sucker',
+  }
+];
+
+if (!themes.some((t) => t.name === theme)) {
+	return Astro.redirect('/brat');
+}
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/img/icon.png" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content="Generate a brat with a theme and a text" />
+		<meta name="keywords" content="brat, generator, brat generator, brat maker, brat maker, brat creator, brat creator, brat maker, brat maker, brat generator, brat generator, make a brat, make a brat, generate a brat, generate a brat, make a brat, make a brat, generate a brat, generate a brat" />
+		<meta name="author" content="JobKhy" />
+		<meta name="robots" content="index, follow" />
+		<meta name="googlebot" content="index, follow" />
+		<meta name="google" content="index, follow" />
+		<meta name="apple-mobile-web-app-title" content="Brat Generator" />
+		<meta name="application-name" content="Brat Generator" />
+		<meta name="msapplication-TileColor" content="#8ace00" />
+		<meta name="theme-color" content="#8ace00" />
+		<title>Brat Generator</title>
+	</head>
+	<body class={`theme-${theme}`}>
+		<article class="full-frame">
+      <article class="content-container">
+        <p>
+      {content? content : 'Enter a text below and select a theme to generate a brat'}
+    </p></article>
+		</article>
+		<InputContent />
+		<ThemesContainer themes={themes} />
+		<CreatedBy />
+	</body>
+</html>
